@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-gradient {
+            background: linear-gradient(-45deg, #1a1a1a, #458ee2, #311b92, #1a237e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Ensuring full image display */
+        .full-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain; /* Ensures the entire image fits within the container */
+            max-height: 500px;    /* Optional: controls maximum height */
+        }
+
+        /* Oval shape for profile photo */
+        .oval-profile {
+            border-radius: 50% / 60%; /* Oval shape */
+            width: 200px; /* Optional: Set a width for the oval */
+            height: 300px; /* Optional: Set a height for the oval */
+            object-fit: cover; /* Ensures the image is cropped to fit the oval */
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <script>
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-fade').forEach((el) => observer.observe(el));
+        });
+    </script>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-800 shadow-lg fixed w-full z-10 animate__animated animate__fadeInDown">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <a href="#" class="flex items-center py-4">
+                        <span class="font-semibold text-white text-lg">Portfolio</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <a href="#about" class="py-4 px-2 text-gray-300 hover:text-purple-400 transition-colors duration-300">About</a>
+                    <a href="#courses" class="py-4 px-2 text-gray-300 hover:text-purple-400 transition-colors duration-300">Courses</a>
+                    <a href="#skills" class="py-4 px-2 text-gray-300 hover:text-purple-400 transition-colors duration-300">Skills</a>
+                    <a href="#hobbies" class="py-4 px-2 text-gray-300 hover:text-purple-400 transition-colors duration-300">Hobbies</a>
+                    <a href="#contact" class="py-4 px-2 text-gray-300 hover:text-purple-400 transition-colors duration-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="pt-24 animate-gradient">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <!-- Profile image with oval shape -->
+            <img src="photo portfo.jpg" alt="Profile" class="mx-auto mb-8 animate__animated animate__fadeIn floating oval-profile">
+            <h1 class="text-4xl font-bold text-white mb-4 animate__animated animate__fadeInUp">P. Ruthy Shalom</h1>
+            <p class="text-xl text-gray-300 mb-8 animate__animated animate__fadeInUp animate__delay-1s">B.Tech Student | Computer Science Engineering</p>
+            <div class="flex justify-center space-x-4 animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="#contact" class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors duration-300">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-900">
+        <div class="container mx-auto px-6 scroll-fade">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">About Me</h2>
+            <div class="max-w-2xl mx-auto text-gray-300">
+                <p class="mb-4 scroll-fade">
+                    I'm a Third-year B.Tech student in SRM University passionate about technology and innovation. Currently pursuing my degree in Computer Science Engineering.
+                </p>
+                <p class="scroll-fade">
+                    My interests include web development, machine learning, and data structures. I'm actively seeking internship opportunities to apply my skills in a professional environment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-white mb-8 scroll-fade">Courses</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden hover-scale scroll-fade">
+                    <img src="Elab.png" alt="Elab Course" class="w-full h-48 object-cover full-image">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-white">Elab Completion</h3>
+                        <p class="text-gray-300 mb-4">Hands-on coding and programming problem-solving platform.</p>
+                    </div>
+                </div>
+                <!-- Course 2 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden hover-scale scroll-fade">
+                    <img src="dsa portifo pic.jpg" alt="Udemy Course" class="w-full h-48 object-cover full-image">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-white">Udemy Course</h3>
+                        <p class="text-gray-300 mb-4">Completed several development and data science courses.</p>
+                    </div>
+                </div>
+                <!-- Course 3 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden hover-scale scroll-fade">
+                    <img src="c++ port.jpg" alt="Udemy" class="w-full h-48 object-cover full-image">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-white">Udemy Course</h3>
+                        <p class="text-gray-300 mb-4">Coding practice and competitive challenges completed on Hackerrank.</p>
+                    </div>
+                </div>
+                <!-- Course 4 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden hover-scale scroll-fade">
+                    <img src="c port.jpg" alt="Udemy" class="w-full h-48 object-cover full-image">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-white">Udemy Course</h3>
+                        <p class="text-gray-300 mb-4">Coding practice and competitive challenges completed on Hackerrank.</p>
+                    </div>
+                </div>               
+                <!-- Course 5 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden hover-scale scroll-fade">
+                    <img src="Hackerrank.png" alt="Hackerrank" class="w-full h-48 object-cover full-image">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-white">Hackerrank</h3>
+                        <p class="text-gray-300 mb-4">Coding practice and competitive challenges completed on Hackerrank.</p>
+                    </div>
+                </div>
+                <!-- Course 6 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden hover-scale scroll-fade">
+                    <img src="DSA codechef.jpg" alt="Codechef" class="w-full h-48 object-cover full-image">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-white">Codechef</h3>
+                        <p class="text-gray-300 mb-4">Data Structures & Algorithms courses for coding proficiency.</p>
+                    </div>
+                </div>
+                <!-- Course 7 -->
+<div class="bg-gray-700 rounded-lg shadow-md overflow-hidden hover-scale scroll-fade">
+    <img src="Scholarship certificate.jpg" alt="Course 7" class="w-full h-48 object-cover full-image">
+    <div class="p-6">
+        <h3 class="font-bold text-xl mb-2 text-white">Performance Based Scholarship</h3>
+        <p class="text-gray-300 mb-4">2nd Rank in CSE w/s Software Engineering.</p>
+    </div>
+</div>
+
+<!-- Course 8 -->
+<div class="bg-gray-700 rounded-lg shadow-md overflow-hidden hover-scale scroll-fade">
+    <img src="java prog.jpg" alt="Course 8" class="w-full h-48 object-cover full-image">
+    <div class="p-6">
+        <h3 class="font-bold text-xl mb-2 text-white">NPTEL</h3>
+        <p class="text-gray-300 mb-4">Programming in Java.</p>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-16 bg-gray-800">
+    <div class="container mx-auto px-6 scroll-fade">
+        <h2 class="text-3xl font-bold text-center text-white mb-8">Skills</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Skill 1: Python -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <i class="fab fa-python text-4xl text-white mb-4"></i>
+                <h3 class="font-bold text-xl text-white mb-2">Python</h3>
+                <p class="text-gray-300">Proficient in Python for scripting, automation, and web development.</p>
+            </div>
+            <!-- Skill 2: C -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <i class="fab fa-cuttlefish text-4xl text-white mb-4"></i>
+                <h3 class="font-bold text-xl text-white mb-2">C</h3>
+                <p class="text-gray-300">Strong understanding of C programming for system-level applications.</p>
+            </div>
+            <!-- Skill 3: C++ (replaced icon with text) -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <div class="text-4xl text-white mb-4 font-bold">C++</div>
+                <h3 class="font-bold text-xl text-white mb-2">C++</h3>
+                <p class="text-gray-300">Experience with object-oriented programming and system-level development using C++.</p>
+            </div>
+            <!-- Skill 4: Java -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <i class="fab fa-java text-4xl text-white mb-4"></i>
+                <h3 class="font-bold text-xl text-white mb-2">Java</h3>
+                <p class="text-gray-300">Skilled in Java for building robust, scalable applications.</p>
+            </div>
+            <!-- Skill 5: HTML & CSS -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <i class="fab fa-html5 text-4xl text-white mb-4"></i>
+                <h3 class="font-bold text-xl text-white mb-2">HTML & CSS</h3>
+                <p class="text-gray-300">Solid understanding of HTML and CSS for web page structure and content layout.</p>
+            </div>
+            <!-- Skill 6: JavaScript -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <i class="fab fa-js-square text-4xl text-white mb-4"></i>
+                <h3 class="font-bold text-xl text-white mb-2">JavaScript</h3>
+                <p class="text-gray-300">Skilled in JavaScript for interactive and dynamic web development.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="py-16 bg-gray-700">
+        <div class="container mx-auto px-6 scroll-fade">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">Hobbies</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-plane-departure text-4xl text-white mb-4"></i>
+                    <h3 class="font-bold text-xl text-white mb-2">Travelling</h3>
+                    <p class="text-gray-300">Exploring new places and cultures.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-utensils text-4xl text-white mb-4"></i>
+                    <h3 class="font-bold text-xl text-white mb-2">Cooking</h3>
+                    <p class="text-gray-300">Experimenting with new recipes and cooking styles.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-headphones text-4xl text-white mb-4"></i>
+                    <h3 class="font-bold text-xl text-white mb-2">Listening to Music</h3>
+                    <p class="text-gray-300">Enjoying different genres of music to relax and unwind.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                    <i class="fas fa-praying-hands text-4xl text-white mb-4"></i>
+                    <h3 class="font-bold text-xl text-white mb-2">Praying</h3>
+                    <p class="text-gray-300">Engaging in prayer and meditation for inner peace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-800">
+        <div class="container mx-auto px-6 scroll-fade">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">Contact</h2>
+            <div class="max-w-2xl mx-auto text-gray-300">
+                <p>If you'd like to get in touch, feel free to reach out to me through the form or email.</p>
+                <p class="mt-4">Email: <a href="mailto:someone@example.com" class="text-purple-400">ruthyshalom2005@gmail.com</a></p>
+                
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
